@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "ec3bf74b-74a1-43b3-a5ea-b3b7d71e60b3",
+		"name": "Raza Web Client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8612452"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"id\": 123,\r\n      \"message\": \"raza asif\"\r\n\t  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5810/reactive-webclient/checkclient",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5810",
+					"path": [
+						"reactive-webclient",
+						"checkclient"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

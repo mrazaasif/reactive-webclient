@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<definitions name="test" targetNamespace="http://us.world_corp.my_soap_forum.wsdl" xmlns:tns="http://us.world_corp.my_soap_forum.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://us.world_corp.my_soap_forum.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <!--  definition of datatypes  -->
+    <types>
+        <xsd:schema xmlns="http://www.w3.org/2000/10/XMLSchema" targetNamespace="http://us.world_corp.my_soap_forum.xsd">
+			<xsd:complexType name="message">
+				<xsd:all>
+					<xsd:element name="value" type="xsd:string"/>
+				</xsd:all>
+			</xsd:complexType>
+			<xsd:complexType name="resultcode">
+				<xsd:all>
+					<xsd:element name="value" type="xsd:int"/>
+				</xsd:all>
+			</xsd:complexType>
+        </xsd:schema>
+    </types>
+    <!--  response messages  -->
+    <message name="returns_resultcode">
+        <part name="resultcode" type="xsd1:resultcode"/>
+    </message>
+    <!--  request messages  -->
+    <message name="post_message">
+        <part name="message" type="xsd1:message"/>
+    </message>
+    <!--  server's services  -->
+    <portType name="my_SOAP_forum">
+        <operation name="post_message">
+            <input message="tns:post_message"/>
+            <output message="tns:returns_resultcode"/>
+        </operation>
+    </portType>
+    <!--  server encoding  -->
+    <binding name="my_SOAP_forum_webservices" type="tns:my_SOAP_forum">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="post_message">
+            <soap:operation soapAction="urn:xmethods-delayed-quotes#post_message"/>
+            <input>
+                <soap:body namespace="urn:xmethods-delayed-quotes"/>
+            </input>
+            <output>
+                <soap:body namespace="urn:xmethods-delayed-quotes"/>
+            </output>
+        </operation>
+    </binding>
+    <!--  access to service provider  -->
+    <service name="exemple">
+        <port name="exemple_0" binding="tns:my_SOAP_forum_webservices">
+            <soap:address location="http://localhost:80/"/>
+        </port>
+        <port name="exemple_1" binding="tns:my_SOAP_forum_webservices">
+            <soap:address location="http://localhost:80/"/>
+        </port>
+    </service>
+</definitions>
